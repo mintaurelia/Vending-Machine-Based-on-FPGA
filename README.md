@@ -1,42 +1,66 @@
-FPGA Vending Machine Controller
-This project implements a digital vending machine controller using Verilog HDL and a finite state machine architecture. It is designed for FPGA hardware and supports the complete vending workflow, from product selection to payment, dispensing, and change return.
+# FPGA Vending Machine Controller
 
-Features
-Supports 16 products with configurable prices
-Allows customers to purchase up to two different products
-Supports quantities from 1 to 3 for each product
-Accepts multiple coin denominations: 1, 5, 10, 20, and 50
-Calculates the total purchase price automatically
-Tracks the inserted amount during payment
-Automatically detects payment completion
-Simulates the dispensing process
-Supports transaction cancellation
-Provides manual change return, one unit per button press
-Includes button synchronization, debouncing, and pulse generation
-Displays system status using LEDs
-Displays product information, prices, inserted money, and change using an eight-digit seven-segment display
-Includes a Verilog simulation testbench for functional verification
-System Architecture
-The controller is organized into several functional modules:
+A Verilog HDL-based vending machine controller implemented with a finite state machine architecture. The system supports product selection, quantity control, payment processing, dispensing, transaction cancellation, and manual change return.
 
-vending_top: Top-level system integration module
-vending_fsm: Finite state machine for transaction control
-price_rom: Product price lookup module
-key_pulse: Button synchronization and debouncing module
-display_controller: Seven-segment display scanning and output module
-Payment and coin decoding logic
-Product selection and quantity management logic
-Change management and dispensing control logic
-The main operating states include idle, product selection, quantity selection, total price confirmation, payment, dispensing, and change return.
+## Features
 
-Verification
-The design can be verified through simulation using a dedicated testbench. The test scenarios cover reset behavior, button debouncing, product and quantity selection, invalid quantity handling, coin decoding, payment accumulation, automatic dispensing, transaction cancellation, change calculation, and return to the idle state.
+- Supports 16 products with configurable prices
+- Supports purchasing up to two different products
+- Supports quantities from 1 to 3 for each product
+- Accepts coin denominations of 1, 5, 10, 20, and 50
+- Calculates the total purchase price automatically
+- Tracks the inserted amount during payment
+- Detects payment completion automatically
+- Simulates the product dispensing process
+- Supports transaction cancellation
+- Provides manual change return, one unit per button press
+- Includes button synchronization and debouncing
+- Provides LED-based system status indication
+- Displays product and payment information on an eight-digit seven-segment display
+- Includes a Verilog HDL simulation testbench
 
-Target Hardware
-The design is suitable for FPGA development boards equipped with:
+## System Architecture
 
-Push buttons
-Slide switches
-LEDs
-An eight-digit seven-segment display
-The included constraint file can be adapted to the target board and pin assignments.
+The controller is divided into several functional modules:
+
+| Module | Description |
+| --- | --- |
+| `vending_top` | Top-level module that integrates the complete system |
+| `vending_fsm` | Finite state machine for transaction control |
+| `price_rom` | Product price lookup module |
+| `key_pulse` | Button synchronization, debouncing, and pulse generation |
+| `display_controller` | Seven-segment display scanning and output control |
+| Coin decoder | Decodes the selected coin denomination |
+| Payment manager | Tracks inserted money and calculates change |
+| Dispensing controller | Simulates the product dispensing process |
+
+## Operating Flow
+
+The main operating states are:
+
+```text
+IDLE
+  |
+  v
+Product Selection
+  |
+  v
+Quantity Selection
+  |
+  v
+Second Product Selection (optional)
+  |
+  v
+Total Price Confirmation
+  |
+  v
+Payment
+  |
+  v
+Dispensing
+  |
+  v
+Change Return
+  |
+  v
+IDLE
