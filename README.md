@@ -64,6 +64,7 @@ Change Return
   |
   v
 IDLE
+```
 
 The system uses button pulses to control state transitions. Invalid quantities and invalid coin combinations are rejected by the control logic.
 
@@ -155,3 +156,12 @@ key_pulse.v
 display_controller.v
 vending_top_tb.v
 Nexys4DDR_Master.xdc
+```
+
+## HDL and Tools
+
+- Verilog HDL
+- FPGA-based digital system design
+- Finite state machine control
+- Seven-segment display multiplexing
+- Functional simulation
