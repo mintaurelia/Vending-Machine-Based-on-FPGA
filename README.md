@@ -1,4 +1,4 @@
-# FPGA Vending Machine Controller
+# FPGA Vending Machine Controller 东南大学暑期学校FPGA项目
 
 This project was developed as a digital systems course design project during the second-year summer school at the School of Information, Southeast University.
 A Verilog HDL-based vending machine controller implemented with a finite state machine architecture. The system supports product selection, quantity control, payment processing, dispensing, transaction cancellation, and manual change return.
